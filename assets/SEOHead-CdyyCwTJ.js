@@ -1,0 +1,1 @@
+import{r}from"./index-D1N5iZ08.js";const a=({title:t,description:n})=>(r.useEffect(()=>{document.title=t;let e=document.querySelector('meta[name="description"]');e||(e=document.createElement("meta"),e.setAttribute("name","description"),document.head.appendChild(e)),e.setAttribute("content",n)},[n,t]),null);export{a as S};
