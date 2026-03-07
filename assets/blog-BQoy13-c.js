@@ -167,7 +167,7 @@ date: 2026-03-07
 tags: ["Power Apps", "React", "TypeScript", "Vite", "Microsoft 365"]
 summary: "Power Apps Code Apps let you build full React+TypeScript applications that run inside the Power Platform with access to Dataverse, Copilot Studio, and Microsoft 365 connectors. Here is what the setup actually looks like."
 coverImage: "/images/blog/power-apps-code-getting-started-cover.png"
-draft: true
+draft: false
 ---
 
 ![Power Apps Code Apps getting started](/images/blog/power-apps-code-getting-started-cover.png)
