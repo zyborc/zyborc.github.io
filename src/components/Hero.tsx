@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { personal } from '../data/personal';
+import { toSiteAssetUrl } from '../lib/site';
 
 const Hero = () => {
   return (
@@ -21,7 +22,7 @@ const Hero = () => {
         <div className="hero__panel">
           <img
             className="hero__image"
-            src="./images/profile/alexander-siedler.jpg"
+            src={toSiteAssetUrl('/images/profile/alexander-siedler.jpg')}
             alt="Portrait of Alexander Siedler"
           />
           <div className="hero__meta">
