@@ -7,8 +7,8 @@ interface CertBadgeProps {
 const CertBadge = ({ certification }: CertBadgeProps) => {
   return (
     <div className="cert-badge">
-      <strong>{certification.year}</strong>
-      <span>{certification.name}</span>
+      <strong className="cert-badge__year">{certification.year}</strong>
+      <span className="cert-badge__name">{certification.name}</span>
     </div>
   );
 };

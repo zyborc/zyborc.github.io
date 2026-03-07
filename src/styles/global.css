@@ -1,32 +1,32 @@
 :root {
-  --color-bg: #fafaf9;
-  --color-bg-alt: #f5f5f4;
+  --color-bg: #f3f7ff;
+  --color-bg-alt: #e7eefb;
   --color-surface: #ffffff;
-  --color-text: #1c1917;
-  --color-text-secondary: #78716c;
-  --color-border: #e7e5e4;
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
-  --color-accent-subtle: #eef2ff;
+  --color-text: #0f172a;
+  --color-text-secondary: #5f6f89;
+  --color-border: #ccdaef;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-subtle: #dbeafe;
   --radius-md: 0.9rem;
   --radius-lg: 1.25rem;
   --radius-xl: 2rem;
   --radius-full: 999px;
-  --shadow-sm: 0 12px 24px rgba(28, 25, 23, 0.06);
-  --shadow-md: 0 18px 40px rgba(28, 25, 23, 0.12);
+  --shadow-sm: 0 14px 32px rgba(37, 99, 235, 0.08);
+  --shadow-md: 0 24px 56px rgba(15, 23, 42, 0.14);
   --transition-base: 180ms ease;
 }
 
 :root[data-theme='dark'] {
-  --color-bg: #0c0a09;
-  --color-bg-alt: #1c1917;
-  --color-surface: #292524;
-  --color-text: #fafaf9;
-  --color-text-secondary: #a8a29e;
-  --color-border: #44403c;
-  --color-accent: #818cf8;
-  --color-accent-hover: #a5b4fc;
-  --color-accent-subtle: rgba(99, 102, 241, 0.15);
+  --color-bg: #030817;
+  --color-bg-alt: #081327;
+  --color-surface: #0f1b34;
+  --color-text: #f8fbff;
+  --color-text-secondary: #95a7c6;
+  --color-border: #233a63;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93c5fd;
+  --color-accent-subtle: rgba(59, 130, 246, 0.18);
   --shadow-sm: 0 12px 24px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
@@ -42,7 +42,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(99, 102, 241, 0.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.22), transparent 24%),
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 28%),
     linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
   color: var(--color-text);
 }
@@ -75,7 +76,8 @@ img {
 }
 
 .section--alt {
-  background: color-mix(in srgb, var(--color-bg-alt) 88%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-bg-alt) 92%, transparent), color-mix(in srgb, var(--color-bg) 88%, transparent));
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }

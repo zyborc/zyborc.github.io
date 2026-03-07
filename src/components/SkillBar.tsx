@@ -8,7 +8,7 @@ const SkillBar = ({ skill }: SkillBarProps) => {
   return (
     <div className="skill-bar">
       <div className="skill-bar__header">
-        <span>{skill.name}</span>
+        <strong>{skill.name}</strong>
         <span>{skill.rating}/5</span>
       </div>
       <div className="skill-bar__track">

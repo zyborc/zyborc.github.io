@@ -9,8 +9,10 @@ const Timeline = ({ items }: TimelineProps) => {
     <div className="timeline">
       {items.map((item) => (
         <article className="timeline__item" key={item.id}>
-          <p className="timeline__period">{item.period}</p>
-          <h3>{item.role}</h3>
+          <div className="timeline__heading">
+            <h3>{item.role}</h3>
+            <p className="timeline__period">{item.period}</p>
+          </div>
           <p className="timeline__company">{item.company}</p>
           <ul>
             {item.description.map((entry) => (
