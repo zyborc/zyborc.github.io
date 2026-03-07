@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Siedler | Manager Collaboration Platforms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.8); border-color: rgba(51, 65, 85, 0.5); }
+        
+        .timeline-line { width: 2px; height: 100%; background: #e2e8f0; position: absolute; left: 0.5rem; top: 0; }
+        .dark .timeline-line { background: #334155; }
+        
+        .timeline-dot { width: 1rem; height: 1rem; border-radius: 9999px; background: #3b82f6; position: absolute; left: 0; top: 0.25rem; z-index: 10; border: 2px solid white; }
+        .dark .timeline-dot { border-color: #0f172a; }
+        
+        /* Markdown Styles for Chatbot */
+        .prose-chat h1 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .prose-chat h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .prose-chat p { margin-bottom: 0.5rem; }
+        .prose-chat p:last-child { margin-bottom: 0; }
+        .prose-chat ul { list-style-type: disc; margin-left: 1.25rem; margin-bottom: 0.5rem; }
+        .prose-chat ol { list-style-type: decimal; margin-left: 1.25rem; margin-bottom: 0.5rem; }
+        .prose-chat li { margin-bottom: 0.25rem; }
+        .prose-chat strong { font-weight: 700; }
+        .prose-chat code { background-color: rgba(0,0,0,0.05); padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-family: monospace; }
+        .dark .prose-chat code { background-color: rgba(255,255,255,0.1); }
+        .user-bubble .prose-chat code { background-color: rgba(255,255,255,0.2); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "marked": "https://esm.sh/marked@^12.0.0",
+    "dompurify": "https://esm.sh/dompurify@^3.0.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 overflow-x-hidden">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

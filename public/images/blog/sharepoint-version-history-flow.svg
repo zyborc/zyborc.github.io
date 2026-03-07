@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" rx="32" fill="#fafaf9"/>
+  <rect x="64" y="120" width="280" height="170" rx="24" fill="#e0e7ff" stroke="#6366f1" stroke-width="3"/>
+  <text x="96" y="170" fill="#312e81" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">Power Apps</text>
+  <text x="96" y="214" fill="#4338ca" font-family="Inter, Arial, sans-serif" font-size="22">Trigger flow with Item ID</text>
+  <rect x="458" y="90" width="300" height="230" rx="24" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="490" y="142" fill="#14532d" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">Power Automate</text>
+  <text x="490" y="188" fill="#166534" font-family="Inter, Arial, sans-serif" font-size="22">Power Apps trigger</text>
+  <text x="490" y="224" fill="#166534" font-family="Inter, Arial, sans-serif" font-size="22">HTTP request to SharePoint</text>
+  <text x="490" y="260" fill="#166534" font-family="Inter, Arial, sans-serif" font-size="22">Parse JSON</text>
+  <rect x="872" y="120" width="264" height="170" rx="24" fill="#cffafe" stroke="#0f766e" stroke-width="3"/>
+  <text x="904" y="170" fill="#115e59" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">SharePoint</text>
+  <text x="904" y="214" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="22">Versions endpoint</text>
+  <path d="M344 204H458" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+  <path d="M758 204H872" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+  <path d="M872 238H758" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 14"/>
+  <path d="M458 238H344" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 14"/>
+  <text x="116" y="440" fill="#111827" font-family="JetBrains Mono, monospace" font-size="28">GET /_api/lists/getbyid('&lt;List ID&gt;')/items(&lt;Item ID&gt;)/versions</text>
+  <rect x="96" y="492" width="1008" height="144" rx="22" fill="#111827"/>
+  <text x="128" y="544" fill="#a5b4fc" font-family="JetBrains Mono, monospace" font-size="22">Response:</text>
+  <text x="128" y="586" fill="#e5e7eb" font-family="JetBrains Mono, monospace" font-size="22">{ "value": [ { "_UIVersionString": "3.0", "WorkflowStatus": "Approved" } ] }</text>
+</svg>
