@@ -15,6 +15,8 @@ Copilot Studio is Microsoft's platform for building custom AI agents. Power Apps
 
 In practice, I hit five significant issues that are not documented anywhere.
 
+> 📖 Official docs: [Connect your code app to data](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/connect-to-data) · [Copilot Studio overview](https://learn.microsoft.com/en-us/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)
+
 ## Pitfall 1: The `x-ms-conversation-id` Header Bug
 
 When you run `pac code add-data-source` and select the Copilot Studio connector, it generates a `MicrosoftCopilotStudioService.ts` file. This file contains a critical bug.
