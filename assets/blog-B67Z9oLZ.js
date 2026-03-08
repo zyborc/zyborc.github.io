@@ -338,11 +338,11 @@ All of this in a single React application, deployed as a Power App, accessible t
 
 ### Spotlight: Per-User Configuration via OneDrive
 
-The configurable dashboards feature deserves a closer look. Instead of storing user preferences only in \`localStorage\` (which is device-specific), I sync the configuration to each user's **OneDrive AppRoot** folder. Settings follow the user across devices — no backend required.
+The configurable dashboards feature deserves a closer look. Instead of storing user preferences only in \`localStorage\` (which is device-specific), I sync the configuration to each user's **OneDrive AppRoot** folder. Settings follow the user across devices without a dedicated backend.
 
-The idea came from [Guido Zambarda's blog post](https://iamguidozam.blog/2026/02/18/storing-app-configuration-in-onedrive-with-microsoft-graph-using-an-spfx-web-part/) about storing SPFx app configuration in OneDrive via Microsoft Graph. I adapted it for Power Apps Code Apps.
+The idea came from [Guido Zambarda's blog post](https://iamguidozam.blog/2026/02/18/storing-app-configuration-in-onedrive-with-microsoft-graph-using-an-spfx-web-part/) about storing SPFx app configuration in OneDrive via Microsoft Graph. I adapted the same idea for Power Apps Code Apps.
 
-The key insight: the **Office 365 Users connector** exposes an \`HttpRequest\` method that acts as a generic Microsoft Graph proxy. You can call any Graph endpoint through it — including OneDrive file operations:
+The key insight: the **Office 365 Users connector** exposes an \`HttpRequest\` method that can forward Microsoft Graph calls. The official documentation describes \`/me\` and \`/users/<userId>\` as the supported roots and primarily documents Outlook-oriented resources such as \`messages\`, \`mailFolders\`, \`events\`, \`calendar\`, \`calendars\`, \`outlook\`, and \`inferenceClassification\`, but in practice \`me/drive\` also works for OneDrive file operations:
 
 \`\`\`typescript
 import { Office365UsersService } from '../generated/services/Office365UsersService';
@@ -363,24 +363,15 @@ if (response.success && response.data) {
     : response.data;
   // Merge with defaults and apply...
 }
-
-// Write config to user's OneDrive
-await Office365UsersService.HttpRequest(
-  ONEDRIVE_CONFIG_URI,
-  'PUT',
-  JSON.stringify(config),
-  'application/json',
-  '', '', '', '', ''
-);
 \`\`\`
 
-The full \`ConfigContext\` uses a **three-layer strategy**:
+The full \`ConfigContext\` still follows a **three-layer strategy**:
 
 1. **Boot:** Load from \`localStorage\` instantly (fast startup, no waiting for network)
-2. **Hydrate:** Fetch from OneDrive in the background, deep-merge with defaults, update state
+2. **Hydrate:** Fetch persisted config from OneDrive in the background, deep-merge with defaults, update state
 3. **Save:** On every config change, write to both \`localStorage\` and OneDrive
 
-Deep merging is critical — when you ship a code update with new config fields, the old OneDrive file will not have those keys. Without deep merge, new defaults get silently lost:
+Deep merging is critical. When you ship a code update with new config fields, an older OneDrive config file will not have those keys. Without deep merge, new defaults get silently lost:
 
 \`\`\`typescript
 const mergeConfig = (incoming: Partial<ConfigType>): ConfigType => ({
@@ -400,9 +391,7 @@ const mergeConfig = (incoming: Partial<ConfigType>): ConfigType => ({
 });
 \`\`\`
 
-If the OneDrive file does not exist yet (first-time user), the \`GET\` will fail. In the catch block, create the file with defaults using \`PUT\` — the \`approot\` special folder is auto-created by OneDrive.
-
-This gives you **cross-device config sync without a backend**, using only the Office 365 Users connector that is already available in your Code App.
+The practical takeaway: \`Office365UsersService.HttpRequest\` is more capable than the narrow examples in the docs suggest, and it is enough to support OneDrive-backed per-user configuration in a Code App.
 
 ## When to Use Code Apps
 
