@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Apps Code Apps: A Developer's Guide to Getting Started | Alexander Siedler</title><title>Alexander Siedler | Blog &amp; Portfolio</title><title>Alexander Siedler | Blog &amp; Portfolio</title>
+    <meta name="description" content="Alexander Siedler writes about AI, collaboration platforms, automation, and digital workplace transformation.">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+    <script type="module" crossorigin="" src="/assets/index-DsIzJ83V.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-DcJk50mL.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="/assets/Home-CsRqdNVq.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/useBlogPosts-CNxrZn9a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/TagList-D2RdFCzN.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/blog-coPXoTE9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/site-CQVX8_-E.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/ProjectCard-iGePGrhJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/SEOHead-CeVh5QO5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/projects-Wt7U02py.js"><meta name="description" content="AI, collaboration platforms, and automation for complex enterprise environments."><meta property="og:title" content="Alexander Siedler | Blog &amp; Portfolio"><meta property="og:description" content="AI, collaboration platforms, and automation for complex enterprise environments."><meta name="twitter:title" content="Alexander Siedler | Blog &amp; Portfolio"><meta name="twitter:description" content="AI, collaboration platforms, and automation for complex enterprise environments."><link rel="modulepreload" as="script" crossorigin="" href="/assets/BlogPost-D9BCWLX_.js"><meta name="description" content="Power Apps Code Apps let you build full React+TypeScript applications that run inside the Power Platform with access to Dataverse, Copilot Studio, and Microsoft 365 connectors. Here is what the setup actually looks like."><meta property="og:title" content="Power Apps Code Apps: A Developer's Guide to Getting Started | Alexander Siedler"><meta property="og:description" content="Power Apps Code Apps let you build full React+TypeScript applications that run inside the Power Platform with access to Dataverse, Copilot Studio, and Microsoft 365 connectors. Here is what the setup actually looks like."><meta name="twitter:title" content="Power Apps Code Apps: A Developer's Guide to Getting Started | Alexander Siedler"><meta name="twitter:description" content="Power Apps Code Apps let you build full React+TypeScript applications that run inside the Power Platform with access to Dataverse, Copilot Studio, and Microsoft 365 connectors. Here is what the setup actually looks like."></head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="shell site-header__inner"><a class="site-brand" href="/" data-discover="true">Alexander Siedler</a><nav class="site-nav" aria-label="Primary"><a class="site-nav__link" href="/" data-discover="true">Home</a><a aria-current="page" class="site-nav__link site-nav__link--active" href="/blog" data-discover="true">Blog</a><a class="site-nav__link" href="/about" data-discover="true">About</a><a class="site-nav__link" href="/projects" data-discover="true">Projects</a><a class="site-nav__link" href="/contact" data-discover="true">Contact</a></nav><button type="button" class="theme-toggle" aria-label="Toggle color theme"><span>Dark</span></button></div></header><main id="main-content"><article class="section"><div class="shell article-shell"><div class="article-layout"><div class="prose-shell article-main"><a class="back-link" href="/blog" data-discover="true">Back to blog</a><p class="eyebrow">2026-03-07</p><h1>Power Apps Code Apps: A Developer's Guide to Getting Started</h1><p class="post-summary">Power Apps Code Apps let you build full React+TypeScript applications that run inside the Power Platform with access to Dataverse, Copilot Studio, and Microsoft 365 connectors. Here is what the setup actually looks like.</p><div class="article-meta"><span>10 min read</span><span aria-hidden="true">•</span><span>14 sections</span></div><div class="tag-list" aria-label="Tags"><span class="tag">Power Apps</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Microsoft 365</span></div><figure class="post-cover"><img alt="Power Apps Code Apps: A Developer's Guide to Getting Started" src="/images/blog/power-apps-code-getting-started-cover.png"></figure><div class="prose"><h2 id="what-are-power-apps-code-apps"><button class="prose-heading-link" type="button">What Are Power Apps Code Apps?</button></h2>
+<p>If you have built canvas apps or model-driven apps in Power Apps before, Code Apps feel like a different world. Instead of the low-code designer, you get a standard <strong>React + TypeScript + Vite</strong> project. You write real components, manage real state, and deploy through the <code class="prose-inline-code" node="[object Object]">pac</code> CLI.</p>
+<p>The key difference from a regular React app: your application runs inside the Power Platform runtime and gets automatic access to <strong>connectors</strong> — the same ones available in Power Automate and canvas apps. That means Office 365 mail, SharePoint, Jira, Copilot Studio, Dataverse, and hundreds of other services are available through generated TypeScript service classes.</p>
+<blockquote>
+<p>📖 Official docs: <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps Code Apps Overview</a> · <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/architecture">Architecture</a></p>
+</blockquote>
+<h2 id="the-tech-stack"><button class="prose-heading-link" type="button">The Tech Stack</button></h2>
+<p>A Power Apps Code App is built on:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="prose-table-wrap"><table class="prose-table"><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Runtime</td><td><code class="prose-inline-code" node="[object Object]">@microsoft/power-apps</code> SDK</td></tr><tr><td>Build</td><td>Vite + <code class="prose-inline-code" node="[object Object]">@microsoft/power-apps-vite</code> plugin</td></tr><tr><td>UI</td><td>React 19 + TypeScript</td></tr><tr><td>Data</td><td>Auto-generated service classes from connectors</td></tr><tr><td>Deploy</td><td><code class="prose-inline-code" node="[object Object]">pac code push</code></td></tr></tbody></table></div>
+<p>There is no custom framework to learn. If you know React, you know 90% of what you need.</p>
+<h2 id="project-setup"><button class="prose-heading-link" type="button">Project Setup</button></h2>
+<h3 id="1-initialize-the-project"><button class="prose-heading-link" type="button">1. Initialize the Project</button></h3>
+<p>Scaffold a new project from the official template and initialize it with the PAC CLI:</p>
+<pre class="prose-code-block"><code class="hljs language-bash" node="[object Object]">npx degit github:microsoft/PowerAppsCodeApps/templates/vite my-app
+<span class="hljs-built_in">cd</span> my-app
+npm install
+pac code init --displayname <span class="hljs-string">"My App"</span>
+</code></pre>
+<p>This gives you a standard Vite project structure with the Power Apps plugin pre-configured.</p>
+<blockquote>
+<p>📖 Full walkthrough: <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/create-an-app-from-scratch">Create a code app from scratch</a></p>
+</blockquote>
+<h3 id="2-the-vite-configuration"><button class="prose-heading-link" type="button">2. The Vite Configuration</button></h3>
+<p>The only non-standard piece is the Vite plugin:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">import</span> { defineConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">'vite'</span>;
+<span class="hljs-keyword">import</span> react <span class="hljs-keyword">from</span> <span class="hljs-string">'@vitejs/plugin-react'</span>;
+<span class="hljs-keyword">import</span> { powerApps } <span class="hljs-keyword">from</span> <span class="hljs-string">'@microsoft/power-apps-vite'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>({
+  <span class="hljs-attr">plugins</span>: [<span class="hljs-title function_">react</span>(), <span class="hljs-title function_">powerApps</span>()],
+});
+</code></pre>
+<p>The <code class="prose-inline-code" node="[object Object]">powerApps()</code> plugin handles local authentication redirects and connector routing during development.</p>
+<h3 id="3-getting-runtime-context-optional"><button class="prose-heading-link" type="button">3. Getting Runtime Context (Optional)</button></h3>
+<p>The SDK provides <code class="prose-inline-code" node="[object Object]">getContext()</code> from <code class="prose-inline-code" node="[object Object]">@microsoft/power-apps/app</code> to retrieve runtime information like the current user or environment details. This is <strong>not required</strong> — your generated service classes work without it.</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">import</span> { getContext } <span class="hljs-keyword">from</span> <span class="hljs-string">'@microsoft/power-apps/app'</span>;
+
+<span class="hljs-comment">// Example: get runtime info for user greeting or environment logic</span>
+<span class="hljs-keyword">const</span> context = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getContext</span>();
+</code></pre>
+<p>Use it when you need user identity or environment metadata, not as an initialization step.</p>
+<h2 id="adding-data-sources"><button class="prose-heading-link" type="button">Adding Data Sources</button></h2>
+<p>This is where Power Apps Code Apps really shine. Instead of writing REST clients manually, you generate typed service classes from connectors:</p>
+<pre class="prose-code-block"><code class="hljs language-bash" node="[object Object]">pac code add-data-source
+</code></pre>
+<p>This opens an interactive prompt where you select from available connectors — Office 365 Outlook, SharePoint, Jira Cloud, Copilot Studio, and many more. The CLI generates TypeScript files in <code class="prose-inline-code" node="[object Object]">src/generated/services/</code> with fully typed methods.</p>
+<blockquote>
+<p>📖 Official guide: <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/connect-to-data">Connect your code app to data</a></p>
+</blockquote>
+<p>For example, after adding Office 365 Outlook, you get:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Office365OutlookService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'./generated/services/Office365OutlookService'</span>;
+
+<span class="hljs-comment">// Fetch emails</span>
+<span class="hljs-keyword">const</span> emails = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Office365OutlookService</span>.<span class="hljs-title class_">GetEmailsV3</span>({
+  <span class="hljs-attr">folderPath</span>: <span class="hljs-string">'Inbox'</span>,
+  <span class="hljs-attr">top</span>: <span class="hljs-number">20</span>,
+});
+
+<span class="hljs-comment">// Get today's calendar events</span>
+<span class="hljs-keyword">const</span> events = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Office365OutlookService</span>.<span class="hljs-title class_">GetEventsCalendarViewV3</span>({
+  <span class="hljs-attr">calendarId</span>: <span class="hljs-string">'Calendar'</span>,
+  <span class="hljs-attr">startDateTimeUtc</span>: todayStart,
+  <span class="hljs-attr">endDateTimeUtc</span>: todayEnd,
+});
+</code></pre>
+<p>No API keys, no OAuth dance, no token management. The Power Platform runtime handles all of that.</p>
+<h2 id="mock-first-development"><button class="prose-heading-link" type="button">Mock-First Development</button></h2>
+<p>Here is a practical pattern I recommend when building your initial UI: <strong>start with mock data, then swap in real services.</strong></p>
+<p>The reason: before you run <code class="prose-inline-code" node="[object Object]">pac code add-data-source</code>, the generated service files do not exist yet. Your component structure, layouts, and state management can be developed with mock data first, then swapped to real connectors once you add them.</p>
+<p>Create your data hooks with a clean interface:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-comment">// hooks/useTickets.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">useTickets</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">const</span> [tickets, setTickets] = useState&lt;<span class="hljs-title class_">Ticket</span>[]&gt;(<span class="hljs-variable constant_">MOCK_TICKETS</span>);
+  <span class="hljs-keyword">const</span> [loading, setLoading] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+  <span class="hljs-keyword">return</span> { tickets, loading };
+};
+</code></pre>
+<p>Later, replace the mock data with real service calls:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">useTickets</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">const</span> [tickets, setTickets] = useState&lt;<span class="hljs-title class_">Ticket</span>[]&gt;([]);
+  <span class="hljs-keyword">const</span> [loading, setLoading] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">true</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title class_">JiraCloudService</span>.<span class="hljs-title class_">SearchForIssuesUsingJql</span>({ <span class="hljs-attr">jql</span>: <span class="hljs-string">'assignee = currentUser()'</span> })
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> <span class="hljs-title function_">setTickets</span>(<span class="hljs-title function_">mapJiraToTickets</span>(result.<span class="hljs-property">issues</span>)))
+      .<span class="hljs-title function_">finally</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>));
+  }, []);
+
+  <span class="hljs-keyword">return</span> { tickets, loading };
+};
+</code></pre>
+<p>The components consuming the hook never need to change.</p>
+<h2 id="development-workflow"><button class="prose-heading-link" type="button">Development Workflow</button></h2>
+<pre class="prose-code-block"><code class="hljs language-text" node="[object Object]">npm run dev         → Starts local Vite server
+→ Open "Local Play" URL  → App runs on apps.powerapps.com with real connectors
+npm run build       → Production bundle
+pac code push       → Deploy to Power Platform
+</code></pre>
+<p>This is one of the best parts: <code class="prose-inline-code" node="[object Object]">npm run dev</code> gives you a <strong>Local Play</strong> URL that opens your app on <code class="prose-inline-code" node="[object Object]">apps.powerapps.com</code>, pointing back to your local dev server. You are running inside the real Power Platform host with full access to all configured connectors and real data. Hot module replacement works — you edit code locally and see changes immediately, tested against live Office 365, Jira, or any other connected service.</p>
+<blockquote>
+<p><strong>Note:</strong> Since December 2025, Chrome and Edge may block requests from public origins to local endpoints. You might need to grant local network access permissions in your browser.</p>
+</blockquote>
+<h2 id="what-i-built"><button class="prose-heading-link" type="button">What I Built</button></h2>
+<p>To give concrete context: I built an <strong>ITSM Agent Dashboard</strong> as a Code App that combines:</p>
+<ul>
+<li><strong>Jira Cloud tickets</strong> — queried via JQL, with full detail panels including ADF comment rendering</li>
+<li><strong>Outlook emails</strong> — inbox with reading pane, quick actions, and AI-drafted replies</li>
+<li><strong>Calendar events</strong> — daily schedule from Office 365</li>
+<li><strong>Copilot Studio chat</strong> — floating AI assistant panel for contextual help &amp; search</li>
+<li><strong>Configurable dashboards</strong> — users can configure their own dashboards with config file inside of personal oneDrive</li>
+</ul>
+<p><img class="prose__image" alt="The ITSM Agent Dashboard combining Jira tickets, Outlook calendar, team presence, and sprint metrics in a single view." loading="lazy" src="/images/blog/itsm-dashboard-overview.png"></p>
+<p>All of this in a single React application, deployed as a Power App, accessible to anyone in the organization without additional authentication setup.</p>
+<h3 id="spotlight-per-user-configuration-via-onedrive"><button class="prose-heading-link" type="button">Spotlight: Per-User Configuration via OneDrive</button></h3>
+<p>The configurable dashboards feature deserves a closer look. Instead of storing user preferences only in <code class="prose-inline-code" node="[object Object]">localStorage</code> (which is device-specific), I sync the configuration to each user's <strong>OneDrive AppRoot</strong> folder. Settings follow the user across devices without a dedicated backend.</p>
+<p>The idea came from <a href="https://iamguidozam.blog/2026/02/18/storing-app-configuration-in-onedrive-with-microsoft-graph-using-an-spfx-web-part/">Guido Zambarda's blog post</a> about storing SPFx app configuration in OneDrive via Microsoft Graph. I adapted the same idea for Power Apps Code Apps.</p>
+<p>The key insight: the <strong>Office 365 Users connector</strong> exposes an <code class="prose-inline-code" node="[object Object]">HttpRequest</code> method that can forward Microsoft Graph calls. The official documentation describes <code class="prose-inline-code" node="[object Object]">/me</code> and <code class="prose-inline-code" node="[object Object]">/users/&lt;userId&gt;</code> as the supported roots and primarily documents Outlook-oriented resources such as <code class="prose-inline-code" node="[object Object]">messages</code>, <code class="prose-inline-code" node="[object Object]">mailFolders</code>, <code class="prose-inline-code" node="[object Object]">events</code>, <code class="prose-inline-code" node="[object Object]">calendar</code>, <code class="prose-inline-code" node="[object Object]">calendars</code>, <code class="prose-inline-code" node="[object Object]">outlook</code>, and <code class="prose-inline-code" node="[object Object]">inferenceClassification</code>, but in practice <code class="prose-inline-code" node="[object Object]">me/drive</code> also works for OneDrive file operations:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Office365UsersService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'../generated/services/Office365UsersService'</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">ONEDRIVE_CONFIG_URI</span> =
+  <span class="hljs-string">'https://graph.microsoft.com/v1.0/me/drive/special/approot:/myapp-config.json:/content'</span>;
+
+<span class="hljs-comment">// Read config from user's OneDrive</span>
+<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Office365UsersService</span>.<span class="hljs-title class_">HttpRequest</span>(
+  <span class="hljs-variable constant_">ONEDRIVE_CONFIG_URI</span>,
+  <span class="hljs-string">'GET'</span>,
+  <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>
+);
+
+<span class="hljs-keyword">if</span> (response.<span class="hljs-property">success</span> &amp;&amp; response.<span class="hljs-property">data</span>) {
+  <span class="hljs-keyword">const</span> remoteConfig = <span class="hljs-keyword">typeof</span> response.<span class="hljs-property">data</span> === <span class="hljs-string">'string'</span>
+    ? <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(response.<span class="hljs-property">data</span>)
+    : response.<span class="hljs-property">data</span>;
+  <span class="hljs-comment">// Merge with defaults and apply...</span>
+}
+</code></pre>
+<p>The full <code class="prose-inline-code" node="[object Object]">ConfigContext</code> still follows a <strong>three-layer strategy</strong>:</p>
+<ol>
+<li><strong>Boot:</strong> Load from <code class="prose-inline-code" node="[object Object]">localStorage</code> instantly (fast startup, no waiting for network)</li>
+<li><strong>Hydrate:</strong> Fetch persisted config from OneDrive in the background, deep-merge with defaults, update state</li>
+<li><strong>Save:</strong> On every config change, write to both <code class="prose-inline-code" node="[object Object]">localStorage</code> and OneDrive</li>
+</ol>
+<p>Deep merging is critical. When you ship a code update with new config fields, an older OneDrive config file will not have those keys. Without deep merge, new defaults get silently lost:</p>
+<pre class="prose-code-block"><code class="hljs language-typescript" node="[object Object]"><span class="hljs-keyword">const</span> mergeConfig = (<span class="hljs-attr">incoming</span>: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ConfigType</span>&gt;): <span class="hljs-function"><span class="hljs-params">ConfigType</span> =&gt;</span> ({
+  ...defaultConfig,
+  ...incoming,
+  <span class="hljs-attr">jira</span>: { ...defaultConfig.<span class="hljs-property">jira</span>, ...(incoming.<span class="hljs-property">jira</span> || {}) },
+  <span class="hljs-attr">mail</span>: { ...defaultConfig.<span class="hljs-property">mail</span>, ...(incoming.<span class="hljs-property">mail</span> || {}) },
+  <span class="hljs-attr">copilot</span>: {
+    ...defaultConfig.<span class="hljs-property">copilot</span>,
+    ...(incoming.<span class="hljs-property">copilot</span> || {}),
+    <span class="hljs-attr">prompts</span>: {
+      ...defaultConfig.<span class="hljs-property">copilot</span>.<span class="hljs-property">prompts</span>,
+      ...(incoming.<span class="hljs-property">copilot</span>?.<span class="hljs-property">prompts</span> || {}),
+    },
+  },
+  <span class="hljs-comment">// ... other nested sections</span>
+});
+</code></pre>
+<p>The practical takeaway: <code class="prose-inline-code" node="[object Object]">Office365UsersService.HttpRequest</code> is more capable than the narrow examples in the docs suggest, and it is enough to support OneDrive-backed per-user configuration in a Code App.</p>
+<h2 id="when-to-use-code-apps"><button class="prose-heading-link" type="button">When to Use Code Apps</button></h2>
+<p>Code Apps make sense when:</p>
+<ul>
+<li>You need <strong>complex UI</strong> that the canvas designer cannot express</li>
+<li>You want <strong>real developer tooling</strong> — TypeScript, hot reload, version control</li>
+<li>You need to combine <strong>multiple connectors</strong> in a single view</li>
+<li>Your team already knows <strong>React</strong></li>
+</ul>
+<p>They are probably overkill for simple forms or basic CRUD interfaces where canvas apps still work fine.</p>
+<p>But here is what I think: <strong>Code Apps are the beginning of the end for canvas apps as we know them.</strong> Canvas apps were built for citizen developers — drag-and-drop, Power Fx formulas, limited customization. They served their purpose, but they hit a ceiling fast. The moment you need a custom list view, a chat panel, a master-detail layout, or any kind of state management, you are fighting the platform instead of building with it.</p>
+<p>Code Apps remove that ceiling entirely. You get the full React ecosystem — any npm package, any design pattern, any UI library — while keeping the one thing that made canvas apps valuable: the <strong>connector infrastructure</strong>. Authentication, token management, consent flows — all handled by the platform. You just call <code class="prose-inline-code" node="[object Object]">Service.Method()</code> and get data.</p>
+<p>And here is what enterprise architects care about: you inherit the entire <strong>Power Platform governance stack</strong> without writing a single line of security code. DLP policies control which connectors can be used together. Managed environments enforce sharing limits. Conditional access policies apply automatically. Cross-tenant restrictions, app quarantine, consent suppression for custom connectors, and full <strong>ALM support</strong> with solutions, environments, and managed deployments — all managed by your IT admins through the Power Platform Admin Center, not by you in your React code. For a developer, this means you can build a dashboard that pulls data from Jira, Outlook, and Copilot Studio, and your security team can govern it with the same tools they already use for every other Power App in the organization.</p>
+<p><strong>One honest disclaimer:</strong> Code Apps require a <strong>Power Apps Premium license</strong> (or pay-as-you-go) for end users. That is a real cost. But consider what you are getting: a developer can build a production-quality, enterprise-ready internal tool in <strong>hours</strong>, not weeks — with authentication, governance, and 1,000+ connectors included out of the box. And you do not even need deep React expertise. With AI-assisted coding tools, even developers who have never touched React before can scaffold, iterate, and ship a fully functional Code App. This is just the beginning — the tooling will only get easier from here. The time a citizen developer would spend fighting canvas app limitations easily justifies the license cost. And here is the bigger thought: at this speed and quality level, you are not just replacing canvas apps. You could start replacing <strong>third-party SaaS tools</strong> with custom-built alternatives that fit your organization exactly, governed by your own platform, at a fraction of per-seat SaaS pricing. That is a whole different conversation — and maybe a future article.</p>
+<p>With AI-assisted development making React more accessible to non-traditional developers, the argument for canvas apps gets weaker every month. I would not be surprised if Code Apps become the default recommendation for new Power Apps projects within the next year or two.</p>
+<h2 id="next-steps"><button class="prose-heading-link" type="button">Next Steps</button></h2>
+<p>In the next article, I will cover the tricky part: <a href="/blog/2026-03-power-apps-copilot-studio-pitfalls">integrating Copilot Studio</a> and the undocumented bugs you will hit along the way.</p>
+<h2 id="further-reading"><button class="prose-heading-link" type="button">Further Reading</button></h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps Code Apps Overview</a></li>
+<li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/create-an-app-from-scratch">Create a code app from scratch</a></li>
+<li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/connect-to-data">Connect your code app to data</a></li>
+<li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/architecture">Code Apps Architecture</a></li>
+<li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/system-limits-configuration">System limits and configuration</a></li>
+</ul>
+<hr>
+<p><em>This article is part of a three-part series on building production applications with Power Apps Code Apps.</em></p></div><section class="comments-section" aria-labelledby="comments-heading"><div class="comments-card"><h2 id="comments-heading">Comments</h2><giscus-widget id="comments" repoid="R_kgDORg__Nw" categoryid="DIC_kwDORg__N84C37mv" reactionsenabled="1" emitmetadata="0" inputposition="bottom" host="https://giscus.app" strict="0" theme="http://localhost:4173/giscus/light.css" lang="de" loading="lazy" repo="zyborc/zyborc.github.io" category="General" mapping="specific" term="blog:2026-03-power-apps-code-apps-getting-started"></giscus-widget></div></section></div><aside class="article-sidebar" aria-labelledby="article-sidebar-heading"><div class="article-sidebar__card"><p id="article-sidebar-heading" class="article-sidebar__eyebrow">On this page</p><nav aria-label="Table of contents"><ol class="article-toc"><li class="article-toc__item article-toc__item--active"><button type="button" class="article-toc__button" aria-current="location"><span class="article-toc__index">01</span>What Are Power Apps Code Apps?</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">02</span>The Tech Stack</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">03</span>Project Setup</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">04</span>Adding Data Sources</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">05</span>Mock-First Development</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">06</span>Development Workflow</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">07</span>What I Built</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">08</span>When to Use Code Apps</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">09</span>Next Steps</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">10</span>Further Reading</button></li></ol></nav></div></aside></div></div></article></main><footer class="site-footer"><div class="shell site-footer__inner"><div><p class="site-footer__title">Alexander Siedler</p><p>AI, collaboration platforms, and automation for complex enterprise environments.</p></div><div class="site-footer__links"><a href="mailto:alex.siedler@gmail.com">alex.siedler@gmail.com</a><a href="https://www.linkedin.com/in/alexandersiedler/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/asiedler" target="_blank" rel="noreferrer">GitHub</a></div></div></footer></div>
+  
+
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying SharePoint Version History in Power Apps | Alexander Siedler</title><title>Alexander Siedler | Blog &amp; Portfolio</title><title>Alexander Siedler | Blog &amp; Portfolio</title>
+    <meta name="description" content="Alexander Siedler writes about AI, collaboration platforms, automation, and digital workplace transformation.">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+    <script type="module" crossorigin="" src="/assets/index-DsIzJ83V.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-DcJk50mL.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="/assets/Home-CsRqdNVq.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/useBlogPosts-CNxrZn9a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/TagList-D2RdFCzN.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/blog-coPXoTE9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/site-CQVX8_-E.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/ProjectCard-iGePGrhJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/SEOHead-CeVh5QO5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/projects-Wt7U02py.js"><meta name="description" content="AI, collaboration platforms, and automation for complex enterprise environments."><meta property="og:title" content="Alexander Siedler | Blog &amp; Portfolio"><meta property="og:description" content="AI, collaboration platforms, and automation for complex enterprise environments."><meta name="twitter:title" content="Alexander Siedler | Blog &amp; Portfolio"><meta name="twitter:description" content="AI, collaboration platforms, and automation for complex enterprise environments."><link rel="modulepreload" as="script" crossorigin="" href="/assets/BlogPost-D9BCWLX_.js"><meta name="description" content="How to retrieve SharePoint list item version history with the REST API, process it in Power Automate, and display only changed values inside Power Apps."><meta property="og:title" content="Displaying SharePoint Version History in Power Apps | Alexander Siedler"><meta property="og:description" content="How to retrieve SharePoint list item version history with the REST API, process it in Power Automate, and display only changed values inside Power Apps."><meta name="twitter:title" content="Displaying SharePoint Version History in Power Apps | Alexander Siedler"><meta name="twitter:description" content="How to retrieve SharePoint list item version history with the REST API, process it in Power Automate, and display only changed values inside Power Apps."></head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="shell site-header__inner"><a class="site-brand" href="/" data-discover="true">Alexander Siedler</a><nav class="site-nav" aria-label="Primary"><a class="site-nav__link" href="/" data-discover="true">Home</a><a aria-current="page" class="site-nav__link site-nav__link--active" href="/blog" data-discover="true">Blog</a><a class="site-nav__link" href="/about" data-discover="true">About</a><a class="site-nav__link" href="/projects" data-discover="true">Projects</a><a class="site-nav__link" href="/contact" data-discover="true">Contact</a></nav><button type="button" class="theme-toggle" aria-label="Toggle color theme"><span>Dark</span></button></div></header><main id="main-content"><article class="section"><div class="shell article-shell"><div class="article-layout"><div class="prose-shell article-main"><a class="back-link" href="/blog" data-discover="true">Back to blog</a><p class="eyebrow">2023-09-28</p><h1>Displaying SharePoint Version History in Power Apps</h1><p class="post-summary">How to retrieve SharePoint list item version history with the REST API, process it in Power Automate, and display only changed values inside Power Apps.</p><div class="article-meta"><span>5 min read</span><span aria-hidden="true">•</span><span>8 sections</span></div><div class="tag-list" aria-label="Tags"><span class="tag">SharePoint</span><span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">Microsoft 365</span></div><figure class="post-cover"><img alt="Displaying SharePoint Version History in Power Apps" src="/images/blog/sharepoint-version-history-cover.svg"></figure><div class="prose"><h2 id="introduction"><button class="prose-heading-link" type="button">Introduction</button></h2>
+<p>SharePoint lists are often the operational backbone behind approval processes, request handling, and lightweight business applications. One limitation appears quickly when you build on top of them with Power Apps: the standard SharePoint connector only exposes the current state of a list item, not its full version history.</p>
+<p>If users need transparency about who changed what and when, you need another path.</p>
+<p>This article shows a practical pattern:</p>
+<ol>
+<li>Keep the normal SharePoint data connection in Power Apps.</li>
+<li>Use Power Automate to call the SharePoint REST API.</li>
+<li>Parse the response and return version data to the app.</li>
+<li>Store that data in a collection.</li>
+<li>Render only changed values in a gallery.</li>
+</ol>
+<h2 id="step-1-set-up-the-sharepoint-data-connection"><button class="prose-heading-link" type="button">Step 1: Set up the SharePoint data connection</button></h2>
+<p>Start with the normal SharePoint connection inside Power Apps.</p>
+<ul>
+<li>Open the app in Power Apps Studio.</li>
+<li>Add <code class="prose-inline-code" node="[object Object]">SharePoint</code> as a data source.</li>
+<li>Connect the app to the correct site and list.</li>
+</ul>
+<p>This part is standard, but it is still necessary because the app needs the current list item context. The version history itself will come from a separate flow.</p>
+<h2 id="step-2-retrieve-version-history-with-power-automate"><button class="prose-heading-link" type="button">Step 2: Retrieve version history with Power Automate</button></h2>
+<p>The key is a flow triggered by Power Apps that sends an HTTP request to SharePoint.</p>
+<p><img class="prose__image" alt="Power Automate calling the SharePoint REST API and returning JSON." loading="lazy" src="/images/blog/sharepoint-version-history-flow.svg"></p>
+<p>Create a new flow with the <code class="prose-inline-code" node="[object Object]">Power Apps</code> trigger and add the SharePoint action <code class="prose-inline-code" node="[object Object]">Send an HTTP request to SharePoint</code>.</p>
+<p>Use a <code class="prose-inline-code" node="[object Object]">GET</code> request against the versions endpoint:</p>
+<pre class="prose-code-block"><code class="hljs language-text" node="[object Object]">/_api/lists/getbyid('&lt;List ID&gt;')/items(&lt;Item ID&gt;)/versions
+</code></pre>
+<p>Replace:</p>
+<ul>
+<li><code class="prose-inline-code" node="[object Object]">&lt;List ID&gt;</code> with the target list ID</li>
+<li><code class="prose-inline-code" node="[object Object]">&lt;Item ID&gt;</code> with the selected SharePoint item ID passed from Power Apps</li>
+</ul>
+<p>After the HTTP request:</p>
+<ol>
+<li>Add a <code class="prose-inline-code" node="[object Object]">Parse JSON</code> action.</li>
+<li>Use sample output from a test run to generate the schema.</li>
+<li>Return the parsed result back to Power Apps.</li>
+</ol>
+<p>That gives you a structured payload instead of trying to work with raw JSON inside the app.</p>
+<h2 id="step-3-return-clean-data-to-power-apps"><button class="prose-heading-link" type="button">Step 3: Return clean data to Power Apps</button></h2>
+<p>Before you bind anything to the UI, make sure the flow returns only the values you actually need. In most cases, you do not want the entire response body exposed directly to controls.</p>
+<p>Useful fields usually include:</p>
+<ul>
+<li>Version identifier</li>
+<li>Title</li>
+<li>Editor or creator references</li>
+<li>Modified date</li>
+<li>Workflow status</li>
+<li>Any business columns you want to compare over time</li>
+</ul>
+<p>Keeping the flow output focused makes the app easier to maintain and reduces parsing friction later.</p>
+<h2 id="step-4-store-version-history-in-a-collection"><button class="prose-heading-link" type="button">Step 4: Store version history in a collection</button></h2>
+<p>Once the flow returns the version payload, you can move it into a collection in Power Apps. A common pattern is to execute this when the detail screen becomes visible.</p>
+<p><img class="prose__image" alt="Power Apps collection and gallery pattern for version history." loading="lazy" src="/images/blog/sharepoint-version-history-gallery.svg"></p>
+<p>Example:</p>
+<pre class="prose-code-block"><code class="hljs language-powerfx" node="[object Object]">ClearCollect(
+    collItemHistory,
+    ForAll(
+        Table(
+            ParseJSON(
+                FlowGetItemHistory.Run(
+                    SharePointIntegration.SelectedListItemID
+                ).itemhistory
+            )
+        ),
+        {
+            id: Value.id,
+            Title: Text(Value.Title),
+            WorkflowStatus: Text(Value.WorkflowStatus),
+            _UIVersionString: Value._UIVersionString
+        }
+    )
+)
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li><code class="prose-inline-code" node="[object Object]">ClearCollect</code> resets and fills the target collection.</li>
+<li><code class="prose-inline-code" node="[object Object]">FlowGetItemHistory.Run(...)</code> calls the Power Automate flow.</li>
+<li><code class="prose-inline-code" node="[object Object]">ParseJSON</code> converts the flow response into typed values Power Apps can work with.</li>
+<li><code class="prose-inline-code" node="[object Object]">ForAll</code> maps each version entry into a cleaner structure for the UI.</li>
+</ul>
+<p>The exact property names depend on your SharePoint list. Adjust the mappings to match your environment.</p>
+<h2 id="step-5-show-only-changed-values-in-the-gallery"><button class="prose-heading-link" type="button">Step 5: Show only changed values in the gallery</button></h2>
+<p>At this point, you can bind a gallery to <code class="prose-inline-code" node="[object Object]">collItemHistory</code>. The next improvement is what makes the screen actually useful: only show fields that changed between one version and the previous one.</p>
+<p>For a field like <code class="prose-inline-code" node="[object Object]">WorkflowStatus</code>, the <code class="prose-inline-code" node="[object Object]">Visible</code> property can compare the current version with the previous one:</p>
+<pre class="prose-code-block"><code class="hljs language-powerfx" node="[object Object]">If(
+    Text(ThisItem.WorkflowStatus) &lt;&gt;
+        Text(
+            First(
+                Filter(
+                    collItemHistory,
+                    _UIVersionString = ThisItem._UIVersionString - 1
+                )
+            ).WorkflowStatus
+        ),
+    true,
+    false
+)
+</code></pre>
+<p>This logic works as follows:</p>
+<ul>
+<li><code class="prose-inline-code" node="[object Object]">ThisItem</code> is the current row in the gallery.</li>
+<li><code class="prose-inline-code" node="[object Object]">Filter(...)</code> finds the previous version.</li>
+<li><code class="prose-inline-code" node="[object Object]">First(...)</code> returns that previous record.</li>
+<li>The formula compares the current field value with the prior one.</li>
+<li>If the values differ, the control becomes visible.</li>
+</ul>
+<p>You can reuse the same pattern for other columns such as approvals, comments, assignments, or business-specific status fields.</p>
+<h2 id="practical-notes"><button class="prose-heading-link" type="button">Practical notes</button></h2>
+<p>There are a few details worth watching in real projects:</p>
+<ul>
+<li>Version-heavy lists can generate large payloads, so test with realistic data volumes.</li>
+<li>Internal field names in SharePoint do not always match display names.</li>
+<li><code class="prose-inline-code" node="[object Object]">SelectedListItemID</code> needs to be validated carefully when moving from a test list to a production list.</li>
+<li>Parsing JSON in Power Apps is workable, but cleaner contracts from Power Automate are easier to support over time.</li>
+</ul>
+<p>The more critical the process, the more valuable it is to normalize the response before the app touches it.</p>
+<h2 id="conclusion"><button class="prose-heading-link" type="button">Conclusion</button></h2>
+<p>If you need auditability or user-facing transparency in a Power App backed by SharePoint, version history is worth exposing properly. The standard connector is not enough on its own, but the combination of SharePoint REST API, Power Automate, and a structured collection in Power Apps gives you a reliable solution.</p>
+<p>The important part is not just retrieving old versions. It is presenting the history in a way that helps users understand actual change.</p></div><section class="comments-section" aria-labelledby="comments-heading"><div class="comments-card"><h2 id="comments-heading">Comments</h2><giscus-widget id="comments" repoid="R_kgDORg__Nw" categoryid="DIC_kwDORg__N84C37mv" reactionsenabled="1" emitmetadata="0" inputposition="bottom" host="https://giscus.app" strict="0" theme="http://localhost:4173/giscus/light.css" lang="de" loading="lazy" repo="zyborc/zyborc.github.io" category="General" mapping="specific" term="blog:2023-09-displaying-sharepoint-version-history-in-power-apps"></giscus-widget></div></section></div><aside class="article-sidebar" aria-labelledby="article-sidebar-heading"><div class="article-sidebar__card"><p id="article-sidebar-heading" class="article-sidebar__eyebrow">On this page</p><nav aria-label="Table of contents"><ol class="article-toc"><li class="article-toc__item article-toc__item--active"><button type="button" class="article-toc__button" aria-current="location"><span class="article-toc__index">01</span>Introduction</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">02</span>Step 1: Set up the SharePoint data connection</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">03</span>Step 2: Retrieve version history with Power Automate</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">04</span>Step 3: Return clean data to Power Apps</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">05</span>Step 4: Store version history in a collection</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">06</span>Step 5: Show only changed values in the gallery</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">07</span>Practical notes</button></li><li class="article-toc__item "><button type="button" class="article-toc__button"><span class="article-toc__index">08</span>Conclusion</button></li></ol></nav></div></aside></div></div></article></main><footer class="site-footer"><div class="shell site-footer__inner"><div><p class="site-footer__title">Alexander Siedler</p><p>AI, collaboration platforms, and automation for complex enterprise environments.</p></div><div class="site-footer__links"><a href="mailto:alex.siedler@gmail.com">alex.siedler@gmail.com</a><a href="https://www.linkedin.com/in/alexandersiedler/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/asiedler" target="_blank" rel="noreferrer">GitHub</a></div></div></footer></div>
+  
+
+</body></html>
