@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PageLayout from './layouts/PageLayout';
 import { useTheme } from './hooks/useTheme';
 
@@ -16,7 +16,7 @@ const App = () => {
   const { isDark, toggleTheme } = useTheme();
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <PageLayout isDark={isDark} onToggleTheme={toggleTheme}>
         <Suspense fallback={<main className="section"><div className="shell"><p>Loading...</p></div></main>}>
           <Routes>
@@ -31,7 +31,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </PageLayout>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

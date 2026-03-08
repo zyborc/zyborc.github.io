@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface SEOHeadProps {
   title: string;
@@ -6,20 +6,16 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ title, description }: SEOHeadProps) => {
-  useEffect(() => {
-    document.title = title;
-
-    let descriptionTag = document.querySelector('meta[name="description"]');
-    if (!descriptionTag) {
-      descriptionTag = document.createElement('meta');
-      descriptionTag.setAttribute('name', 'description');
-      document.head.appendChild(descriptionTag);
-    }
-
-    descriptionTag.setAttribute('content', description);
-  }, [description, title]);
-
-  return null;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+    </Helmet>
+  );
 };
 
 export default SEOHead;
