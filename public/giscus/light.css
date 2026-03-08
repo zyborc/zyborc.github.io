@@ -1,0 +1,159 @@
+main {
+  --color-prettylights-syntax-comment: #6b7280;
+  --color-prettylights-syntax-constant: #1d4ed8;
+  --color-prettylights-syntax-entity: #1d4ed8;
+  --color-prettylights-syntax-storage-modifier-import: #0f172a;
+  --color-prettylights-syntax-entity-tag: #1d4ed8;
+  --color-prettylights-syntax-keyword: #1d4ed8;
+  --color-prettylights-syntax-string: #0f766e;
+  --color-prettylights-syntax-variable: #b45309;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #dc2626;
+  --color-prettylights-syntax-invalid-illegal-text: #ffffff;
+  --color-prettylights-syntax-invalid-illegal-bg: #b91c1c;
+  --color-prettylights-syntax-carriage-return-text: #ffffff;
+  --color-prettylights-syntax-carriage-return-bg: #dc2626;
+  --color-prettylights-syntax-string-regexp: #0f766e;
+  --color-prettylights-syntax-markup-list: #1d4ed8;
+  --color-prettylights-syntax-markup-heading: #0f172a;
+  --color-prettylights-syntax-markup-italic: #0f172a;
+  --color-prettylights-syntax-markup-bold: #0f172a;
+  --color-prettylights-syntax-markup-deleted-text: #991b1b;
+  --color-prettylights-syntax-markup-deleted-bg: #fee2e2;
+  --color-prettylights-syntax-markup-inserted-text: #115e59;
+  --color-prettylights-syntax-markup-inserted-bg: #ccfbf1;
+  --color-prettylights-syntax-markup-changed-text: #92400e;
+  --color-prettylights-syntax-markup-changed-bg: #fef3c7;
+  --color-prettylights-syntax-markup-ignored-text: #ffffff;
+  --color-prettylights-syntax-markup-ignored-bg: #2563eb;
+  --color-prettylights-syntax-meta-diff-range: #7c3aed;
+  --color-prettylights-syntax-brackethighlighter-angle: #475569;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #94a3b8;
+  --color-prettylights-syntax-constant-other-reference-link: #0f766e;
+
+  --color-fg-default: #0f172a;
+  --color-fg-muted: #5f6f89;
+  --color-fg-subtle: #64748b;
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #f3f7ff;
+  --color-canvas-subtle: #e7eefb;
+  --color-border-default: #ccdaef;
+  --color-border-muted: #d9e4f4;
+  --color-border-subtle: rgba(204, 218, 239, 0.65);
+  --color-shadow-small: 0 14px 32px rgba(37, 99, 235, 0.08);
+  --color-shadow-medium: 0 24px 56px rgba(15, 23, 42, 0.14);
+  --color-neutral-muted: rgba(37, 99, 235, 0.1);
+  --color-accent-fg: #2563eb;
+  --color-accent-emphasis: #2563eb;
+  --color-accent-muted: rgba(37, 99, 235, 0.28);
+  --color-accent-subtle: #dbeafe;
+  --color-success-fg: #0f766e;
+  --color-attention-fg: #b45309;
+  --color-attention-muted: rgba(180, 83, 9, 0.25);
+  --color-attention-subtle: #fef3c7;
+  --color-danger-fg: #dc2626;
+  --color-danger-muted: rgba(220, 38, 38, 0.24);
+  --color-danger-subtle: #fee2e2;
+
+  --color-btn-text: #0f172a;
+  --color-btn-bg: #ffffff;
+  --color-btn-border: #ccdaef;
+  --color-btn-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  --color-btn-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  --color-btn-hover-bg: #eff5ff;
+  --color-btn-hover-border: #bfd1eb;
+  --color-btn-active-bg: #e7eefb;
+  --color-btn-active-border: #b4c7e3;
+  --color-btn-selected-bg: #e7eefb;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #2563eb;
+  --color-btn-primary-border: #2563eb;
+  --color-btn-primary-shadow: 0 1px 0 rgba(15, 23, 42, 0.1);
+  --color-btn-primary-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --color-btn-primary-hover-bg: #1d4ed8;
+  --color-btn-primary-hover-border: #1d4ed8;
+  --color-btn-primary-selected-bg: #1e40af;
+  --color-btn-primary-selected-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  --color-btn-primary-disabled-text: #ffffff;
+  --color-btn-primary-disabled-bg: #93c5fd;
+  --color-btn-primary-disabled-border: #93c5fd;
+  --color-btn-outline-text: #2563eb;
+  --color-btn-outline-hover-text: #1d4ed8;
+  --color-btn-outline-hover-bg: #eff5ff;
+  --color-btn-outline-hover-border: #bfd1eb;
+  --color-btn-outline-hover-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  --color-btn-outline-selected-bg: #dbeafe;
+  --color-btn-outline-selected-shadow: inset 0 1px 0 rgba(15, 23, 42, 0.04);
+  --color-btn-outline-disabled-text: #93c5fd;
+  --color-btn-outline-disabled-bg: #ffffff;
+  --color-btn-outline-disabled-border: #d9e4f4;
+  --color-btn-danger-text: #dc2626;
+  --color-btn-danger-hover-text: #ffffff;
+  --color-btn-danger-hover-bg: #dc2626;
+  --color-btn-danger-hover-border: #dc2626;
+  --color-btn-danger-hover-shadow: 0 1px 0 rgba(15, 23, 42, 0.08);
+  --color-btn-danger-selected-bg: #b91c1c;
+  --color-btn-danger-selected-shadow: 0 0 0 3px rgba(220, 38, 38, 0.16);
+  --color-btn-danger-disabled-text: #fca5a5;
+  --color-btn-danger-disabled-bg: #ffffff;
+  --color-btn-danger-disabled-border: #fecaca;
+  --color-input-bg: #ffffff;
+  --color-input-border: #ccdaef;
+  --color-input-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+  --color-donut-error: #dc2626;
+  --color-donut-success: #0f766e;
+  --color-donut-warning: #d97706;
+  --color-donut-info: #2563eb;
+  --color-avatar-bg: #dbeafe;
+  --color-avatar-border: rgba(37, 99, 235, 0.16);
+  --color-avatar-stack-fade: #ffffff;
+  --color-avatar-stack-fade-more: #e7eefb;
+  --color-avatar-child-shadow: -2px -2px 0 rgba(255, 255, 255, 0.8);
+  --color-underlinenav-icon: #5f6f89;
+  --color-underlinenav-border-hover: rgba(37, 99, 235, 0.32);
+  --color-action-list-item-inline-divider: rgba(204, 218, 239, 0.75);
+  --color-topic-tag-border: rgba(37, 99, 235, 0.16);
+  --color-counter-border: rgba(37, 99, 235, 0.16);
+  --color-select-menu-backdrop-border: rgba(15, 23, 42, 0.08);
+  --color-select-menu-tap-highlight: rgba(37, 99, 235, 0.1);
+  --color-select-menu-tap-focus-bg: #dbeafe;
+  --color-overlay-shadow: 0 24px 56px rgba(15, 23, 42, 0.16);
+  --color-header-text: #f8fbff;
+  --color-header-bg: #0f172a;
+  --color-header-divider: rgba(255, 255, 255, 0.12);
+  --color-header-logo: #f8fbff;
+  --color-header-search-bg: rgba(255, 255, 255, 0.12);
+  --color-header-search-border: rgba(255, 255, 255, 0.08);
+  --color-sidenav-selected-bg: #dbeafe;
+  --color-menu-bg-active: #eff5ff;
+}
+
+main {
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.gsc-main {
+  color: var(--color-fg-default);
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reactions-count,
+.gsc-homepage-bg,
+.gsc-timeline {
+  border-radius: 18px;
+}
+
+.gsc-comment-box,
+.gsc-comment {
+  box-shadow: var(--color-shadow-small);
+}
+
+.gsc-comment-box-tabs {
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.gsc-reactions-count {
+  backdrop-filter: blur(8px);
+}

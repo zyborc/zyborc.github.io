@@ -566,6 +566,30 @@
   box-shadow: 0 20px 50px rgba(2, 6, 23, 0.42);
 }
 
+.comments-section {
+  margin-top: 3rem;
+}
+
+.comments-card {
+  padding: 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-surface) 98%, transparent),
+    color-mix(in srgb, var(--color-bg-alt) 32%, var(--color-surface) 68%)
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+.comments-card h2 {
+  margin-bottom: 1rem;
+}
+
+.comments-card--setup p + p {
+  margin-top: 0.85rem;
+}
+
 .contact-grid {
   flex-direction: column;
   margin-top: 2rem;

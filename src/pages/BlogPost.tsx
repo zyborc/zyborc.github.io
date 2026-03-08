@@ -4,6 +4,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import type { Components } from 'react-markdown';
+import BlogComments from '../components/BlogComments';
 import SEOHead from '../components/SEOHead';
 import TagList from '../components/TagList';
 import { getPostBySlug } from '../lib/blog';
@@ -71,6 +72,7 @@ const BlogPost = () => {
             {stripLeadingCoverImage(post.content, post.coverImage)}
           </ReactMarkdown>
         </div>
+        <BlogComments slug={post.slug} />
       </div>
     </article>
   );
