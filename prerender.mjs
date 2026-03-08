@@ -18,7 +18,7 @@ async function prerender() {
     app.use(express.static(distPath));
 
     // Fallback to index.html for SPA routing
-    app.get('*', (req, res) => {
+    app.use((req, res) => {
         res.sendFile(resolve(distPath, 'index.html'));
     });
 

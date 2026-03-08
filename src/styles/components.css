@@ -855,7 +855,7 @@
 @media (min-width: 1320px) {
   .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 14rem;
+    grid-template-columns: minmax(0, 1fr) 18rem;
     gap: 2rem;
   }
 
@@ -876,7 +876,7 @@
   }
 
   .article-layout {
-    grid-template-columns: minmax(0, 56rem) 15rem;
+    grid-template-columns: minmax(0, 56rem) 22rem;
     gap: 2.5rem;
     justify-content: center;
   }
