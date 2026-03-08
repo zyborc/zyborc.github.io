@@ -26,7 +26,10 @@ async function prerender() {
         console.log(`Express server running on port ${PORT}`);
     });
 
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({ 
+        headless: 'new',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
 
     // We will crawl the site starting from the root
