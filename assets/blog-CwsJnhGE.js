@@ -1,4 +1,4 @@
-const p=`---
+import{c as p}from"./index-DvlBxgbV.js";const d=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"M12 6v6l4 2",key:"mmk7yg"}]],k=p("clock",d),u=`---
 title: "Displaying SharePoint Version History in Power Apps"
 date: 2023-09-28
 tags: ["SharePoint", "Power Apps", "Power Automate", "Microsoft 365"]
@@ -161,7 +161,7 @@ The more critical the process, the more valuable it is to normalize the response
 If you need auditability or user-facing transparency in a Power App backed by SharePoint, version history is worth exposing properly. The standard connector is not enough on its own, but the combination of SharePoint REST API, Power Automate, and a structured collection in Power Apps gives you a reliable solution.
 
 The important part is not just retrieving old versions. It is presenting the history in a way that helps users understand actual change.
-`,d=`---
+`,h=`---
 title: "Dynamic Adaptive Cards in Copilot Studio: A Workaround for Unknown Form Fields"
 date: 2026-03-08
 tags: ["Copilot Studio", "Microsoft", "Jira", "Adaptive Cards", "Power Platform"]
@@ -753,7 +753,7 @@ Have you encountered similar challenges with dynamic forms in Copilot Studio? I'
 ---
 
 *Want to learn more about Copilot Studio and Power Platform integrations? Follow my blog for more technical deep-dives and practical solutions.*
-`,u=`---
+`,m=`---
 title: "Power Apps Code Apps: A Developer's Guide to Getting Started"
 date: 2026-03-07
 tags: ["Power Apps", "React", "TypeScript", "Vite", "Microsoft 365"]
@@ -1021,7 +1021,7 @@ In the next article, I will cover the tricky part: [integrating Copilot Studio](
 ---
 
 *This article is part of a three-part series on building production applications with Power Apps Code Apps.*
-`,h=`---
+`,f=`---
 title: "12 Things I Wish I Knew Before Building Power Apps Code Apps"
 date: 2026-03-09
 tags: ["Power Apps", "React", "TypeScript", "Lessons Learned", "Microsoft 365"]
@@ -1317,7 +1317,7 @@ If you are building internal tools for Microsoft 365 organizations today, Code A
 ---
 
 *This concludes the three-part series on Power Apps Code Apps. Part 1: [Getting Started](/blog/2026-03-power-apps-code-apps-getting-started). Part 2: [Copilot Studio Pitfalls](/blog/2026-03-power-apps-copilot-studio-pitfalls).*
-`,m=`---
+`,g=`---
 title: "Copilot Studio in Power Apps Code Apps: Every Pitfall I Hit"
 date: 2026-03-08
 tags: ["Power Apps", "Copilot Studio", "AI", "TypeScript", "Microsoft 365"]
@@ -1542,4 +1542,4 @@ None of these are documented in the official Power Apps Code Apps documentation 
 ---
 
 *This is part 2 of a three-part series. Previously: [Getting Started with Power Apps Code Apps](/blog/2026-03-power-apps-code-apps-getting-started). Next: [12 Things I Wish I Knew](/blog/2026-03-power-apps-code-apps-lessons-learned).*
-`,f=Object.assign({"../content/blog/2023-09-displaying-sharepoint-version-history-in-power-apps.md":p,"../content/blog/2026-03-copilot-studio-dynamic-adaptive-cards.md":d,"../content/blog/2026-03-power-apps-code-apps-getting-started.md":u,"../content/blog/2026-03-power-apps-code-apps-lessons-learned.md":h,"../content/blog/2026-03-power-apps-copilot-studio-pitfalls.md":m}),g=t=>{const e=t.trim().split(/\s+/).filter(Boolean).length;return Math.max(1,Math.ceil(e/200))},y=t=>typeof t!="string"?new Date().toISOString().slice(0,10):t,c=t=>{const e=t.trim();return e==="true"?!0:e==="false"?!1:e.startsWith('"')&&e.endsWith('"')||e.startsWith("'")&&e.endsWith("'")?e.slice(1,-1):e},v=t=>{const e=t.trim().replace(/^\[/,"").replace(/\]$/,"");return e?e.split(",").map(o=>c(o)).filter(o=>typeof o=="string"&&o.length>0):[]},w=t=>{if(!t.startsWith("---"))return{data:{},content:t.trim()};const e=t.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);if(!e)return{data:{},content:t.trim()};const[,o,r]=e,i={};for(const n of o.split(/\r?\n/)){if(!n.trim())continue;const s=n.indexOf(":");if(s===-1)continue;const l=n.slice(0,s).trim(),a=n.slice(s+1).trim();i[l]=a.startsWith("[")?v(a):c(a)}return{data:i,content:r.trim()}},b=()=>Object.entries(f).map(([t,e])=>{const o=t.split("/").pop()?.replace(/\.md$/,"")??"post",i=w(typeof e=="string"?e:""),n=i.data;return{slug:o,title:n.title??o,date:y(n.date),tags:Array.isArray(n.tags)?n.tags:[],summary:n.summary??"",coverImage:n.coverImage,draft:n.draft??!1,content:i.content.trim(),readingTimeMinutes:g(i.content)}}).filter(t=>!t.draft).sort((t,e)=>e.date.localeCompare(t.date)),T=t=>b().find(e=>e.slug===t);export{T as a,b as g};
+`,y=Object.assign({"../content/blog/2023-09-displaying-sharepoint-version-history-in-power-apps.md":u,"../content/blog/2026-03-copilot-studio-dynamic-adaptive-cards.md":h,"../content/blog/2026-03-power-apps-code-apps-getting-started.md":m,"../content/blog/2026-03-power-apps-code-apps-lessons-learned.md":f,"../content/blog/2026-03-power-apps-copilot-studio-pitfalls.md":g}),v=t=>{const e=t.trim().split(/\s+/).filter(Boolean).length;return Math.max(1,Math.ceil(e/200))},w=t=>typeof t!="string"?new Date().toISOString().slice(0,10):t,c=t=>{const e=t.trim();return e==="true"?!0:e==="false"?!1:e.startsWith('"')&&e.endsWith('"')||e.startsWith("'")&&e.endsWith("'")?e.slice(1,-1):e},b=t=>{const e=t.trim().replace(/^\[/,"").replace(/\]$/,"");return e?e.split(",").map(o=>c(o)).filter(o=>typeof o=="string"&&o.length>0):[]},T=t=>{if(!t.startsWith("---"))return{data:{},content:t.trim()};const e=t.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);if(!e)return{data:{},content:t.trim()};const[,o,r]=e,i={};for(const n of o.split(/\r?\n/)){if(!n.trim())continue;const s=n.indexOf(":");if(s===-1)continue;const l=n.slice(0,s).trim(),a=n.slice(s+1).trim();i[l]=a.startsWith("[")?b(a):c(a)}return{data:i,content:r.trim()}},S=()=>Object.entries(y).map(([t,e])=>{const o=t.split("/").pop()?.replace(/\.md$/,"")??"post",i=T(typeof e=="string"?e:""),n=i.data;return{slug:o,title:n.title??o,date:w(n.date),tags:Array.isArray(n.tags)?n.tags:[],summary:n.summary??"",coverImage:n.coverImage,draft:n.draft??!1,content:i.content.trim(),readingTimeMinutes:v(i.content)}}).filter(t=>!t.draft).sort((t,e)=>e.date.localeCompare(t.date)),C=t=>S().find(e=>e.slug===t);export{k as C,C as a,S as g};
