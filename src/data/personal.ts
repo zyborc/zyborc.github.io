@@ -1,5 +1,6 @@
 export const personal = {
   name: 'Alexander Siedler',
+  avatar: '/images/profile/alexander-siedler.jpg',
   role: 'Manager Collaboration Platforms',
   tagline: 'AI, collaboration platforms, and automation for complex enterprise environments.',
   company: 'Pfeifer & Langen IT-Solutions KG',

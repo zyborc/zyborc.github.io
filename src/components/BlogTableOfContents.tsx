@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import type { BlogHeading } from '../lib/blogHeadings';
 
 type BlogTableOfContentsProps = {
@@ -8,49 +7,36 @@ type BlogTableOfContentsProps = {
 };
 
 const BlogTableOfContents = ({ headings, activeId, onSelect }: BlogTableOfContentsProps) => {
-  const activeItemRef = useRef<HTMLLIElement | null>(null);
   const displayHeadings = headings.filter((heading) => heading.level === 2);
-
-  useEffect(() => {
-    if (activeItemRef.current) {
-      activeItemRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
-  }, [activeId]);
 
   if (displayHeadings.length < 2) {
     return null;
   }
 
   return (
-    <aside className="article-sidebar" aria-labelledby="article-sidebar-heading">
-      <div className="article-sidebar__card">
-        <p id="article-sidebar-heading" className="article-sidebar__eyebrow">
-          On this page
-        </p>
-        <nav aria-label="Table of contents">
-          <ol className="article-toc">
-            {displayHeadings.map((heading, index) => (
-              <li
-                key={heading.id}
-                ref={activeId === heading.id ? activeItemRef : null}
-                className={`article-toc__item ${activeId === heading.id ? 'article-toc__item--active' : ''
-                  }`}
+    <nav aria-label="Table of contents">
+      <ul className="space-y-2">
+        {displayHeadings.map((heading) => {
+          const isActive = activeId === heading.id;
+          return (
+            <li key={heading.id}>
+              <button
+                type="button"
+                className={`block w-full text-left text-sm py-1 border-l-2 pl-4 transition-all ${
+                  isActive
+                    ? 'border-cyan-400 text-cyan-400'
+                    : 'border-gray-800 text-gray-500 hover:text-gray-300 hover:border-gray-600'
+                }`}
+                onClick={() => onSelect(heading.id)}
+                aria-current={isActive ? 'location' : undefined}
               >
-                <button
-                  type="button"
-                  className="article-toc__button"
-                  onClick={() => onSelect(heading.id)}
-                  aria-current={activeId === heading.id ? 'location' : undefined}
-                >
-                  <span className="article-toc__index">{String(index + 1).padStart(2, '0')}</span>
-                  {heading.text}
-                </button>
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </div>
-    </aside>
+                <span className="leading-snug">{heading.text}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 };
 

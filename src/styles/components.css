@@ -683,6 +683,69 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.prose h2 .prose-heading-link::before,
+.prose h3 .prose-heading-link::before,
+.prose h4 .prose-heading-link::before {
+  content: '';
+  display: block;
+  border-radius: 9999px;
+  margin-right: 1rem;
+}
+
+.prose h2 .prose-heading-link::before {
+  width: 0.375rem;
+  height: 2rem;
+}
+
+.prose h3 .prose-heading-link::before {
+  width: 0.25rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+.prose h4 .prose-heading-link::before {
+  width: 0.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+/* 1: from-cyan-400 to-blue-500 */
+.prose h2:nth-of-type(5n+1) .prose-heading-link::before,
+.prose h3:nth-of-type(5n+1) .prose-heading-link::before,
+.prose h4:nth-of-type(5n+1) .prose-heading-link::before {
+  background: linear-gradient(to bottom, #22d3ee, #3b82f6);
+}
+
+/* 2: from-purple-400 to-pink-500 */
+.prose h2:nth-of-type(5n+2) .prose-heading-link::before,
+.prose h3:nth-of-type(5n+2) .prose-heading-link::before,
+.prose h4:nth-of-type(5n+2) .prose-heading-link::before {
+  background: linear-gradient(to bottom, #c084fc, #ec4899);
+}
+
+/* 3: from-emerald-400 to-teal-500 */
+.prose h2:nth-of-type(5n+3) .prose-heading-link::before,
+.prose h3:nth-of-type(5n+3) .prose-heading-link::before,
+.prose h4:nth-of-type(5n+3) .prose-heading-link::before {
+  background: linear-gradient(to bottom, #34d399, #14b8a6);
+}
+
+/* 4: from-orange-400 to-rose-500 */
+.prose h2:nth-of-type(5n+4) .prose-heading-link::before,
+.prose h3:nth-of-type(5n+4) .prose-heading-link::before,
+.prose h4:nth-of-type(5n+4) .prose-heading-link::before {
+  background: linear-gradient(to bottom, #fb923c, #f43f5e);
+}
+
+/* 5: from-blue-400 to-indigo-500 */
+.prose h2:nth-of-type(5n+5) .prose-heading-link::before,
+.prose h3:nth-of-type(5n+5) .prose-heading-link::before,
+.prose h4:nth-of-type(5n+5) .prose-heading-link::before {
+  background: linear-gradient(to bottom, #60a5fa, #6366f1);
 }
 
 .prose-heading-link:hover {

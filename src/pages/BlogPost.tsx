@@ -5,10 +5,10 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import type { Components } from 'react-markdown';
+import { Calendar, Clock, Share2, Bookmark, ArrowLeft } from 'lucide-react';
 import BlogComments from '../components/BlogComments';
 import BlogTableOfContents from '../components/BlogTableOfContents';
 import SEOHead from '../components/SEOHead';
-import TagList from '../components/TagList';
 import { extractHeadings, normalizeHeadingText } from '../lib/blogHeadings';
 import { getPostBySlug } from '../lib/blog';
 import { toSiteAssetUrl } from '../lib/site';
@@ -71,22 +71,38 @@ const createMarkdownComponents = (onSelectHeading: (id: string) => void): Compon
   return {
     img: ({ src = '', alt = '' }) => {
       const normalizedSrc = src.startsWith('/') ? toSiteAssetUrl(src) : src;
-      return <img className="prose__image" src={normalizedSrc} alt={alt} loading="lazy" />;
+      return <img className="prose__image rounded-xl shadow-lg border border-gray-800 my-8 mx-auto" src={normalizedSrc} alt={alt} loading="lazy" />;
     },
     h2: createHeading('h2'),
     h3: createHeading('h3'),
     h4: createHeading('h4'),
     table: ({ children }) => (
-      <div className="prose-table-wrap">
+      <div className="prose-table-wrap my-8">
         <table className="prose-table">{children}</table>
       </div>
     ),
-    pre: ({ children }) => <pre className="prose-code-block">{children}</pre>,
+    pre: ({ children }) => (
+      <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 shadow-2xl relative z-10 my-8">
+        <div className="flex items-center gap-2 px-4 py-3 bg-gray-950 border-b border-gray-800">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          </div>
+          <div className="ml-4 font-mono text-xs text-gray-500">~/code</div>
+        </div>
+        <div className="p-4 overflow-x-auto font-mono text-sm">
+          <pre className="text-gray-300">
+            {children}
+          </pre>
+        </div>
+      </div>
+    ),
     code: ({ className, children, ...props }) => {
       const isInline = !className;
 
       return (
-        <code className={isInline ? 'prose-inline-code' : className} {...props}>
+        <code className={isInline ? 'px-1.5 py-0.5 bg-gray-900 border border-gray-800 rounded font-mono text-sm text-cyan-400' : className} {...props}>
           {children}
         </code>
       );
@@ -224,40 +240,114 @@ const BlogPost = () => {
   const markdownComponents = useMemo(() => createMarkdownComponents(selectSection), [setSearchParams]);
 
   return (
-    <article className="section">
+    <div className="min-h-screen bg-black pt-24 pb-12">
       <SEOHead title={`${post.title} | Alexander Siedler`} description={post.summary} />
-      <div className="shell article-shell">
-        <div className="article-layout">
-          <div className="prose-shell article-main">
-            <Link className="back-link" to="/blog">
-              Back to blog
-            </Link>
-            <p className="eyebrow">{post.date}</p>
-            <h1>{post.title}</h1>
-            <p className="post-summary">{post.summary}</p>
-            <div className="article-meta">
+      
+      {/* Back button */}
+      <div className="max-w-4xl mx-auto px-6 mb-8 mt-8">
+        <Link to="/blog" className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 text-sm font-mono transition-colors group">
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>Back to blog</span>
+        </Link>
+      </div>
+
+      {/* Hero */}
+      <header className="max-w-4xl mx-auto px-6 mb-16 animate-slide-up">
+        {/* Meta */}
+        <div className="flex items-center gap-4 mb-6 text-sm text-gray-500 font-mono border-b border-gray-900 pb-4">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4" />
+            <span>{new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(post.date))}</span>
+          </div>
+          <span className="text-gray-800">|</span>
+          {post.readingTimeMinutes && (
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
               <span>{post.readingTimeMinutes} min read</span>
-              <span aria-hidden="true">•</span>
-              <span>{headings.length} sections</span>
             </div>
-            <TagList tags={post.tags} />
-            {post.coverImage ? (
-              <figure className="post-cover">
-                <img src={toSiteAssetUrl(post.coverImage)} alt={post.title} />
-              </figure>
-            ) : null}
-            <div className="prose">
+          )}
+        </div>
+
+        {/* Title */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+          {post.title}
+        </h1>
+
+        {/* Subtitle */}
+        {post.summary && (
+          <p className="text-xl md:text-2xl font-sans text-gray-400 mb-8 max-w-3xl leading-relaxed">{post.summary}</p>
+        )}
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {post.tags.map((tag, idx) => (
+            <span
+              key={idx}
+              className="px-3 py-1 bg-cyan-500/5 border border-cyan-500/20 rounded-full text-xs font-mono text-cyan-400"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Cover Image */}
+        {post.coverImage && (
+          <figure className="mb-8 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/5 relative">
+             <div className="absolute inset-0 bg-gradient-to-t from-gray-950/20 to-transparent pointer-events-none" />
+             <img className="w-full h-auto object-cover max-h-[500px]" src={toSiteAssetUrl(post.coverImage)} alt={post.title} />
+          </figure>
+        )}
+
+        {/* Actions */}
+        <div className="flex items-center gap-3 pt-8 border-t border-gray-900">
+          <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 border border-gray-800 hover:border-cyan-500 rounded-lg text-gray-400 hover:text-cyan-400 transition-all font-mono text-sm">
+            <Share2 className="w-4 h-4" />
+            <span>Share</span>
+          </button>
+          <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 border border-gray-800 hover:border-cyan-500 rounded-lg text-gray-400 hover:text-cyan-400 transition-all font-mono text-sm">
+            <Bookmark className="w-4 h-4" />
+            <span>Save</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Content Grid */}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Table of Contents - Sticky Left */}
+          <aside className="hidden lg:block lg:col-span-3">
+            <div className="sticky top-32">
+              <div className="font-mono text-xs text-cyan-400 mb-4">// contents</div>
+              <BlogTableOfContents headings={headings} activeId={activeSectionId} onSelect={selectSection} />
+            </div>
+          </aside>
+
+          {/* Main Content */}
+          <div className="lg:col-span-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div className={`prose prose-invert prose-lg max-w-none 
+              prose-headings:text-white prose-headings:font-bold prose-headings:font-sans
+              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 
+              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+              prose-p:text-gray-300 prose-p:leading-relaxed 
+              prose-a:text-cyan-400 hover:prose-a:text-cyan-300 prose-a:no-underline hover:prose-a:underline
+              prose-li:text-gray-300 
+              prose-strong:text-white
+              [&_blockquote]:border-l-cyan-500 [&_blockquote]:bg-gray-900/30 [&_blockquote]:px-6 [&_blockquote]:py-1 [&_blockquote]:rounded-r-lg
+            `}>
               <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight, rehypeRaw]}>
                 {content}
               </ReactMarkdown>
             </div>
-            <BlogComments slug={post.slug} />
+            
+            <div className="mt-20 pt-12 border-t border-gray-900">
+              <BlogComments slug={post.slug} />
+            </div>
           </div>
-          <BlogTableOfContents headings={headings} activeId={activeSectionId} onSelect={selectSection} />
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
 export default BlogPost;
+
