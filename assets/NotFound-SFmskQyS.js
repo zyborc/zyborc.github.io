@@ -1,0 +1,1 @@
+import{j as s,L as e}from"./index-k4mD6t8B.js";const o=()=>s.jsx("section",{className:"section",children:s.jsxs("div",{className:"shell prose-shell",children:[s.jsx("p",{className:"eyebrow",children:"404"}),s.jsx("h1",{children:"Page not found."}),s.jsx(e,{className:"button button--primary",to:"/",children:"Return home"})]})});export{o as default};
