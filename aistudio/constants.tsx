@@ -1,7 +1,7 @@
 import { Experience, Project, Skill, Certification, PortfolioGroup } from './types';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/alexandersiedler/';
-export const GITHUB_URL = 'https://github.com/asiedler';
+export const GITHUB_URL = 'https://github.com/zyborc';
 export const EMAIL = 'alex.siedler@gmail.com';
 
 export const EXPERIENCES: Experience[] = [

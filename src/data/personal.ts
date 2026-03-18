@@ -7,7 +7,7 @@ export const personal = {
   location: 'Germany',
   email: 'alex.siedler@gmail.com',
   linkedin: 'https://www.linkedin.com/in/alexandersiedler/',
-  github: 'https://github.com/asiedler',
+  github: 'https://github.com/zyborc',
   bio: 'I lead collaboration and digital workplace initiatives with a focus on secure knowledge access, process automation, and pragmatic AI adoption.',
   heroIntro:
     'I design and deliver modern workplace systems that connect Microsoft 365, Atlassian, SAP, and AI workflows without losing governance or operational clarity.',

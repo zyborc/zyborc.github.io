@@ -54,7 +54,7 @@ const Contact = () => {
               <Github className="w-6 h-6" />
             </div>
             <strong className="block text-white text-xl mb-2">GitHub</strong>
-            <span className="text-gray-400 font-mono text-sm group-hover:text-gray-200 transition-colors">asiedler</span>
+            <span className="text-gray-400 font-mono text-sm group-hover:text-gray-200 transition-colors">zyborc</span>
             <ExternalLink className="absolute top-6 right-6 w-5 h-5 text-gray-700 group-hover:text-gray-300 transition-colors" />
           </a>
         </div>
