@@ -6,6 +6,7 @@ import { mkdirSync, writeFileSync, rmSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distPath = resolve(__dirname, 'dist');
+const SITE_ORIGIN = 'https://zyborc.github.io';
 const PORT = 4173;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -84,6 +85,20 @@ async function prerender() {
 
     console.log('\nPrerendering complete! Generated the following routes:');
     console.log(Array.from(visited).join('\n'));
+
+    // Generate sitemap.xml from discovered routes
+    const today = new Date().toISOString().slice(0, 10);
+    const sitemapEntries = Array.from(visited)
+        .map((route) => {
+            const priority = route === '/' ? '1.0' : route === '/blog' ? '0.8' : '0.6';
+            const changefreq = route.startsWith('/blog/') ? 'monthly' : 'weekly';
+            return `  <url>\n    <loc>${SITE_ORIGIN}${route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+        })
+        .join('\n');
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`;
+    writeFileSync(join(distPath, 'sitemap.xml'), sitemap);
+    console.log(`\nGenerated sitemap.xml with ${visited.size} URLs`);
 
     // Create a 404.html just in case (GitHub Pages uses this for unknown routes)
     try {
